@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :entries, dependent: :destroy
+
+
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
@@ -7,7 +10,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-    validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
 
   # Returns the hash digest of the given string.
@@ -38,4 +41,9 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  def feed
+    Entry.where("user_id = ?", id)
+  end
+
 end
