@@ -21,7 +21,7 @@ class EntriesController < ApplicationController
   private
 
   	def entry_params
-  		params.require(:entry).permit(:content, :title, :picture)
+  		params.require(:entry).permit(:content, :title)
   	end
 
     def correct_user
