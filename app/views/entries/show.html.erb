@@ -1,19 +1,20 @@
-<h3 class="user"><%= link_to @entry.user.name, @entry.user %></h3>
-<%= link_to gravatar_for(@entry.user, size: 50), @entry.user %>
-<h4 class="title">
-  <%= @entry.title %>
-</h4>
-<br>
+<%= link_to gravatar_for(@entry.user, size: 100), @entry.user %>
+<span>
+  <h3 class="user"><%= link_to @entry.user.name, @entry.user %></h3>
+</span>
+<span>
+  <h4 class="title">
+    <%= @entry.title %>
+  </h4>
+</span>
 <span class="content">
   <%= @entry.content %>
 </span>
+<br>
 <span class="timestamp">
   Posted <%= time_ago_in_words(@entry.created_at) %> ago.
-  <% if current_user?(@entry.user) %>
-    <%= link_to "delete", @entry, method: :delete,
-                                     data: { confirm: "You sure?" } %>
-  <% end %>
 </span>
+<br>
 <h3>Comments</h3>
   <ol class="entries">
         <%= render @comments %>

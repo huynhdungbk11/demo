@@ -1,9 +1,18 @@
-<%= form_for(@entry ||= user.entries.find) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	<div class="field">
-		<%= f.text_field :title, placeholder: :title %>
-		<%= f.text_area :content, placeholder: :content %>
-		<%= f.hidden_field :entry_id, value: @entry.id %>
-  </div>
-  <%= f.submit "submit", class: "btn btn-primary" %>
-<% end %>
+<h1>Entry edit</h1>
+<div class="row">
+  	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(@entry ||= user.entries.find) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<div class="field">
+			<%= f.label :title %>
+			<%= f.text_field :title, placeholder: :title %>
+
+			<%= f.label :content %>
+			<%= f.text_area :content, placeholder: :content %>
+			
+			<%= f.hidden_field :entry_id, value: @entry.id %>
+  		</div>
+  		<%= f.submit "submit", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>

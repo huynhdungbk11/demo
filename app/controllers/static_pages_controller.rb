@@ -5,8 +5,8 @@ class StaticPagesController < ApplicationController
       @entry  = current_user.entries.build
       @feed_items = current_user.feed.paginate(page: params[:page])
     else
-      @feedall_items = Entry.take(30)
-      end
+      @feedall_items = Entry.take(10)
+    end
   end
   def help
   end

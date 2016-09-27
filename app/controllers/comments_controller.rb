@@ -7,11 +7,10 @@ class CommentsController < ApplicationController
 	def create
 		@comment = current_user.comments.build(comment_params)
 		if @comment.save
-			flash[:success] = "Comment is created!"
+			flash[:success] = "Commented!"
 			redirect_to :back
 		else
-			flash[:success] = "Comment created!"
-      		render 'new'
+      		redirect_to :back
       	end
 	end
 

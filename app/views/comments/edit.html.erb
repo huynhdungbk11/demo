@@ -1,8 +1,15 @@
-<%= form_for(@comment ||= entry.comments.find) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	<div class="field">
-		<%= f.text_area :content, placeholder: :content %>
-		<%= f.hidden_field :comment_id, value: @comment.id %>
-  </div>
-  <%= f.submit "submit", class: "btn btn-primary" %>
-<% end %>
+<h1>Comment edit</h1>
+<div class="row">
+  	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(@comment ||= entry.comments.find) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<div class="field">
+			<%= f.label :content %>
+			<%= f.text_area :content, placeholder: :content %>
+			
+			<%= f.hidden_field :comment_id, value: @comment.id %>
+  		</div>
+  		<%= f.submit "submit", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>
