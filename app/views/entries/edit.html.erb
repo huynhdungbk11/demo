@@ -1,0 +1,9 @@
+<%= form_for(@entry ||= user.entries.find) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field">
+		<%= f.text_field :title, placeholder: :title %>
+		<%= f.text_area :content, placeholder: :content %>
+		<%= f.hidden_field :entry_id, value: @entry.id %>
+  </div>
+  <%= f.submit "submit", class: "btn btn-primary" %>
+<% end %>
